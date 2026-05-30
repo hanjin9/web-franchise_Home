@@ -44,12 +44,18 @@ export default function Header() {
           </nav>
 
           {/* Desktop CTA button */}
-          <div className="hidden flex-1 items-center justify-end md:flex">
+          <div className="hidden flex-1 items-center justify-end gap-3 md:flex">
             <Link
-              href="/contact"
+              href="/login"
+              className="text-sm font-medium text-yellow-500 transition hover:text-yellow-400"
+            >
+              로그인
+            </Link>
+            <Link
+              href="/signup"
               className="btn-sm bg-gradient-to-r from-yellow-600 to-yellow-500 text-black font-semibold shadow-lg hover:shadow-xl"
             >
-              상담 신청
+              회원가입
             </Link>
           </div>
 
@@ -89,11 +95,18 @@ export default function Header() {
                 </Link>
               ))}
               <Link
-                href="/contact"
+                href="/login"
+                className="text-sm font-medium text-yellow-500 transition hover:text-yellow-400"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                로그인
+              </Link>
+              <Link
+                href="/signup"
                 className="btn-sm bg-gradient-to-r from-yellow-600 to-yellow-500 text-black font-semibold text-center"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                상담 신청
+                회원가입
               </Link>
             </div>
           </nav>

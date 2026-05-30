@@ -1,36 +1,103 @@
+"use client";
+
 import Link from "next/link";
 import Logo from "./logo";
+import { useState } from "react";
 
 export default function Header() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const menuItems = [
+    { href: "/", label: "홈" },
+    { href: "/business-process", label: "사업 프로세스" },
+    { href: "/business-model", label: "사업 모델" },
+    { href: "/global-expansion", label: "글로벌 확장" },
+    { href: "/roadmap", label: "중장기 계획" },
+    { href: "/contact", label: "상담 신청" },
+  ];
+
   return (
-    <header className="fixed top-2 z-30 w-full md:top-6">
+    <header className="fixed top-0 z-30 w-full border-b border-yellow-600/20 bg-black/80 backdrop-blur-md">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="relative flex h-14 items-center justify-between gap-3 rounded-2xl bg-white/90 px-3 shadow-lg shadow-black/[0.03] backdrop-blur-xs before:pointer-events-none before:absolute before:inset-0 before:rounded-[inherit] before:border before:border-transparent before:[background:linear-gradient(var(--color-gray-100),var(--color-gray-200))_border-box] before:[mask-composite:exclude_!important] before:[mask:linear-gradient(white_0_0)_padding-box,_linear-gradient(white_0_0)]">
+        <div className="relative flex h-16 items-center justify-between">
           {/* Site branding */}
           <div className="flex flex-1 items-center">
-            <Logo />
+            <Link href="/" className="flex items-center gap-2">
+              <div className="text-2xl font-bold text-yellow-500">🌍</div>
+              <span className="hidden text-lg font-bold text-white sm:inline">
+                Global Franchise
+              </span>
+            </Link>
           </div>
 
-          {/* Desktop sign in links */}
-          <ul className="flex flex-1 items-center justify-end gap-3">
-            <li>
+          {/* Desktop menu */}
+          <nav className="hidden flex-1 items-center justify-center gap-8 md:flex">
+            {menuItems.map((item) => (
               <Link
-                href="/signin"
-                className="btn-sm bg-white text-gray-800 shadow-sm hover:bg-gray-50"
+                key={item.href}
+                href={item.href}
+                className="text-sm font-medium text-gray-300 transition hover:text-yellow-500"
               >
-                Login
+                {item.label}
               </Link>
-            </li>
-            <li>
-              <Link
-                href="/signup"
-                className="btn-sm bg-gray-800 text-gray-200 shadow-sm hover:bg-gray-900"
-              >
-                Register
-              </Link>
-            </li>
-          </ul>
+            ))}
+          </nav>
+
+          {/* Desktop CTA button */}
+          <div className="hidden flex-1 items-center justify-end md:flex">
+            <Link
+              href="/contact"
+              className="btn-sm bg-gradient-to-r from-yellow-600 to-yellow-500 text-black font-semibold shadow-lg hover:shadow-xl"
+            >
+              상담 신청
+            </Link>
+          </div>
+
+          {/* Mobile menu button */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden"
+          >
+            <svg
+              className="h-6 w-6 text-yellow-500"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
         </div>
+
+        {/* Mobile menu */}
+        {mobileMenuOpen && (
+          <nav className="border-t border-yellow-600/20 py-4 md:hidden">
+            <div className="flex flex-col gap-4">
+              {menuItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="text-sm font-medium text-gray-300 transition hover:text-yellow-500"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              ))}
+              <Link
+                href="/contact"
+                className="btn-sm bg-gradient-to-r from-yellow-600 to-yellow-500 text-black font-semibold text-center"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                상담 신청
+              </Link>
+            </div>
+          </nav>
+        )}
       </div>
     </header>
   );

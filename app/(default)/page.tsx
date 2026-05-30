@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Home - Simple",
-  description: "Page description",
+  title: "홈 - 글로벌 프랜차이즈 사업",
+  description: "무점포 1인 무자본창업 웹사이트 분양 글로벌 프랜차이즈 사업",
 };
 
 import Hero from "@/components/hero-home";

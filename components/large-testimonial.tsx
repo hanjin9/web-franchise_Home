@@ -26,21 +26,18 @@ export default function LargeTestimonial() {
                 src={TestimonialImg}
                 width={48}
                 height={48}
-                alt="Large testimonial"
+                alt="파트너 후기"
               />
             </div>
             <p className="text-2xl font-bold text-gray-900">
-              “Simple has simplified my life in more ways than one. From
-              managing my sites to{" "}
-              <em className="italic text-gray-500">keeping track of tasks</em>,
-              it's become my go-to tool for everything.”
+              "처음엔 반신반의했습니다. 하지만 체계적인 온라인 교육과{" "}
+              <em className="italic text-gray-500">완성된 웹 시스템</em>{" "}
+              덕분에, 시작 3개월 만에 동남아시아 파트너 2곳을 연결할 수 있었습니다."
             </p>
             <div className="text-sm font-medium text-gray-500">
-              <span className="text-gray-700">Mary Sullivan</span>{" "}
+              <span className="text-gray-700">김정우</span>{" "}
               <span className="text-gray-400">/</span>{" "}
-              <a className="text-blue-500" href="#0">
-                CTO at Microsoft
-              </a>
+              <span className="text-blue-500">동남아시아 지역 파트너</span>
             </div>
           </div>
         </div>
